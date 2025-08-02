@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-exo bg-indigo-950 text-white;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-orbitron;
+  }
+}
+
+@layer components {
+  .container-section {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24;
+  }
+
+  .section-title {
+    @apply text-3xl sm:text-4xl lg:text-5xl font-bold mb-8 sm:mb-12 text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-neon;
+  }
+
+  .glass-card {
+    @apply bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl shadow-xl;
+  }
+
+  .btn-primary {
+    @apply px-6 py-3 bg-gradient-to-r from-blue-500 to-neon text-white font-semibold rounded-full transition-all shadow-[0_0_15px_rgba(14,180,252,0.5)] hover:shadow-[0_0_25px_rgba(14,180,252,0.8)] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-indigo-950;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-full border border-white/20 transition-all hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-indigo-950;
+  }
+
+  .neon-glow {
+    text-shadow: 0 0 5px rgba(14, 180, 252, 0.8), 0 0 10px rgba(14, 180, 252, 0.5);
+  }
+
+  .neon-border {
+    @apply border border-neon shadow-[0_0_10px_rgba(20,241,149,0.5)];
+  }
+
+  /* Monitor-specific styles */
+  .monitor-screen {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    position: relative;
+  }
+
+  .monitor-screen::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      linear-gradient(90deg, transparent 98%, rgba(59, 130, 246, 0.03) 100%),
+      linear-gradient(0deg, transparent 98%, rgba(59, 130, 246, 0.03) 100%);
+    background-size: 4px 4px, 4px 4px;
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  .monitor-glow {
+    box-shadow: 
+      0 0 20px rgba(59, 130, 246, 0.2),
+      0 0 40px rgba(59, 130, 246, 0.1),
+      inset 0 0 20px rgba(59, 130, 246, 0.05);
+  }
+
+  .scan-line {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.8), transparent);
+    animation: scan 2s linear infinite;
+  }
+
+  @keyframes scan {
+    0% { top: 0%; opacity: 1; }
+    50% { opacity: 0.8; }
+    100% { top: 100%; opacity: 0; }
+  }
+
+  /* Keyboard key styling */
+  kbd {
+    @apply inline-block px-2 py-1 text-xs font-mono bg-gray-700 text-gray-200 rounded border border-gray-600 shadow-sm;
+  }
+}
